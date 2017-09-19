@@ -19,7 +19,7 @@ public class Pratique {
     @ManyToOne
     Sport sport;
    
-    public enum Niveau {DEBUTANT, INTERMÉDIAIRE, CONFIRMÉ} ; 
+    public static enum Niveau {DEBUTANT, INTERMÉDIAIRE, CONFIRMÉ} ; 
     @Enumerated(EnumType.STRING)
     Niveau niveau;
     ;

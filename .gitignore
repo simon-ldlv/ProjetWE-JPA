@@ -4,3 +4,4 @@ data/test.properties
 data/test.script
 data/test.tmp
 .metadata
+src/main/resources/META-INF

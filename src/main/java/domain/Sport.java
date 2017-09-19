@@ -1,8 +1,11 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import domain.Pratique.Niveau;
 
 
 
@@ -24,6 +27,7 @@ public class Sport {
 
     public Sport(String name) {
         this.name = name;
+        pratiques = new ArrayList<Pratique>();
     }
 
 
@@ -51,6 +55,5 @@ public class Sport {
 		this.pratiques = pratiques;
 	}
 
-	
 	
 }
