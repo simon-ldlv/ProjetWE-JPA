@@ -20,17 +20,14 @@ public class SportDao implements ISportDao {
 		return INSTANCE;
 	}
 	
-	@Override
 	public void persist(Sport entity) {
 		EntityManagerHelper.getEntityManager().persist(entity);
 	}
 
-	@Override
 	public void update(Sport entity) {
 		EntityManagerHelper.getEntityManager().merge(entity);
 	}
 
-	@Override
 	public Sport findById(long id) {
 		Query query = EntityManagerHelper.getEntityManager().createQuery
 				("SELECT s FROM Sport s WHERE id = :monId").setParameter("monId", id);
@@ -38,13 +35,11 @@ public class SportDao implements ISportDao {
 		return (Sport) query.getSingleResult();
 	}
 	
-	@Override
 	public void delete(Sport entity) {
 		EntityManagerHelper.getEntityManager().remove(entity);
 
 	}
 
-	@Override
 	public void deleteById(long id) {
 
 
@@ -54,14 +49,12 @@ public class SportDao implements ISportDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Sport> findAll() {
 		Query query = EntityManagerHelper.getEntityManager().createQuery("SELECT s FROM Sport s");
 		
 		return (List<Sport>) query.getResultList();
 	}
 
-	@Override
 	public void deleteAll() {
 		List<Sport> sports =  findAll();
 		for(Sport mySp : sports) {

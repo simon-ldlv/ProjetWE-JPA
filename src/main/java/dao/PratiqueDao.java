@@ -21,12 +21,10 @@ private static PratiqueDao INSTANCE = null;
 		return INSTANCE;
 	}
 	
-	@Override
 	public void persist(Pratique entity) {
 		EntityManagerHelper.getEntityManager().persist(entity);
 	}
 
-	@Override
 	public void update(Pratique entity) {
 		EntityManagerHelper.getEntityManager().merge(entity);
 	}
@@ -39,13 +37,11 @@ private static PratiqueDao INSTANCE = null;
 		return (Pratique) query.getSingleResult();
 	}
 	
-	@Override
 	public void delete(Pratique entity) {
 		EntityManagerHelper.getEntityManager().remove(entity);
 
 	}
 
-	@Override
 	public void deleteByUserIdSportId(long idu, long ids) {
 
 		Pratique pratiqueToDeleted = (Pratique) findByUserIdSportId(idu,ids);
@@ -54,14 +50,12 @@ private static PratiqueDao INSTANCE = null;
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Pratique> findAll() {
 		Query query = EntityManagerHelper.getEntityManager().createQuery("SELECT p FROM Pratique p");
 		
 		return (List<Pratique>) query.getResultList();
 	}
 
-	@Override
 	public void deleteAll() {
 		List<Pratique> pratiques =  findAll();
 		for(Pratique myPratique : pratiques) {

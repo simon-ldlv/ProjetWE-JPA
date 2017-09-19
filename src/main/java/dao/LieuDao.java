@@ -19,17 +19,14 @@ public class LieuDao implements ILieuDao {
 		return INSTANCE;
 	}
 	
-	@Override
 	public void persist(Lieu entity) {
 		EntityManagerHelper.getEntityManager().persist(entity);
 	}
 
-	@Override
 	public void update(Lieu entity) {
 		EntityManagerHelper.getEntityManager().merge(entity);
 	}
 
-	@Override
 	public Lieu findById(long id) {
 		Query query = EntityManagerHelper.getEntityManager().createQuery
 				("SELECT s FROM Lieu s WHERE id = :monId").setParameter("monId", id);
@@ -37,13 +34,11 @@ public class LieuDao implements ILieuDao {
 		return (Lieu) query.getSingleResult();
 	}
 	
-	@Override
 	public void delete(Lieu entity) {
 		EntityManagerHelper.getEntityManager().remove(entity);
 
 	}
 
-	@Override
 	public void deleteById(long id) {
 
 
@@ -53,14 +48,12 @@ public class LieuDao implements ILieuDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Lieu> findAll() {
 		Query query = EntityManagerHelper.getEntityManager().createQuery("SELECT l FROM Lieu l");
 		
 		return (List<Lieu>) query.getResultList();
 	}
 
-	@Override
 	public void deleteAll() {
 		List<Lieu> lieux =  findAll();
 		for(Lieu myLieu : lieux) {
