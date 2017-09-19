@@ -1,4 +1,4 @@
-package domain;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import domain.Pratique.Niveau;
+import entity.Pratique.Niveau;
 
 @Entity
 public class Personne {
@@ -23,10 +23,10 @@ public class Personne {
 
     private String name;
 
-    @OneToMany(mappedBy = "personne", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "personne", cascade = CascadeType.REMOVE)
     private List<Pratique> pratiques;
     
-    @ManyToMany(mappedBy="personnes", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy="personnes", cascade = CascadeType.REMOVE)
     private List<Lieu> lieux;
 
 
@@ -98,5 +98,12 @@ public class Personne {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Personne [id=" + id + ", name=" + name + ", pratiques=" + pratiques + ", lieux=" + lieux + "]";
+	}
+
+	
+	
     
 }

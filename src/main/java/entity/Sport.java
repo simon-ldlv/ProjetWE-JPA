@@ -1,11 +1,11 @@
-package domain;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
-import domain.Pratique.Niveau;
+import entity.Pratique.Niveau;
 
 
 
@@ -18,7 +18,7 @@ public class Sport {
 
     private String name;
     
-    @OneToMany(mappedBy = "sport", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "sport", cascade = CascadeType.REMOVE)
     private List<Pratique> pratiques;
 
     public Sport() {
@@ -55,5 +55,11 @@ public class Sport {
 		this.pratiques = pratiques;
 	}
 
+	@Override
+	public String toString() {
+		return "Sport [id=" + id + ", name=" + name + "]";
+	}
+
+	
 	
 }

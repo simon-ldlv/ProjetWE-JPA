@@ -1,4 +1,4 @@
-package domain;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +72,12 @@ public class Lieu {
 			pers.getLieux().remove(this);
 			
 		}
+
+		@Override
+		public String toString() {
+			return "Lieu [id=" + id + ", name=" + name + "]";
+		}
 	    
+		
 
 }
