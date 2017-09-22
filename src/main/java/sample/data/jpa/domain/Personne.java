@@ -26,7 +26,7 @@ public class Personne {
     private String name;
 
     
-    @ManyToMany(mappedBy="personnes", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy="personnes", cascade = CascadeType.MERGE)
     private Set<Lieu> lieux;
 
 
