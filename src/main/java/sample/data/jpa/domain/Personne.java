@@ -28,6 +28,7 @@ public class Personne {
     
     @ManyToMany(mappedBy="personnes", cascade = CascadeType.MERGE)
     private Set<Lieu> lieux;
+    private Set<Sport> sport;
 
 
     public Personne() {
@@ -66,6 +67,14 @@ public class Personne {
 
 	public void setLieux(HashSet<Lieu> lieux) {
 		this.lieux = lieux;
+	}
+
+	public Set<Sport> getSport() {
+		return sport;
+	}
+
+	public void setSport(Set<Sport> sport) {
+		this.sport = sport;
 	}
 
 	public String toString() {

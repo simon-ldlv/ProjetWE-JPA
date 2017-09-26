@@ -5,3 +5,5 @@ data/test.script
 data/test.tmp
 .metadata
 src/main/resources/META-INF
+
+src/main/resources/application\.properties

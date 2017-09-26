@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import sample.data.jpa.domain.Lieu;
 import sample.data.jpa.domain.Personne;
+import sample.data.jpa.domain.Sport;
 import sample.data.jpa.service.LieuRepository;
 import sample.data.jpa.service.PersonneRepository;
+import sample.data.jpa.service.SportRepository;
 
 @Controller
 public class PersonneController {
@@ -22,6 +24,8 @@ public class PersonneController {
 	  private PersonneRepository personneRepo;
 	  @Autowired
 	  private LieuRepository lieuRepo;
+	  @Autowired
+	  private SportRepository sportRepo;
 
 	  
 	  
@@ -152,6 +156,35 @@ public class PersonneController {
       return "Error adding the lieu (id="+idl+") to the personne (id="+idp+") : " + ex.toString();
     }
     return "The Lieu with id "+idl+" successfully adding to personne with id "+idp;
+  }
+  
+  @RequestMapping("/personne/{idp}/addSport/{idl}")
+  @ResponseBody
+  public String addSport(@PathVariable long idp, @PathVariable long idl) {
+    try {
+      Personne pers = personneRepo.findOne(idp);
+      if(pers==null) {
+    	  return "ERROR : no personne with id "+idp+" exists.";
+      }
+      
+      Sport sport = sportRepo.findOne(idl);
+      if(sport==null) {
+    	  return "ERROR : no lieu with id "+idl+" exists.";
+      }
+
+      for(Sport sportToTest : pers.getSport()) {
+    	  if(sport.getName().equals(sportToTest.getName())) {
+    		  return "ERROR : the sport "+sport.getName()+" already exist for the personne "+pers.getName()+".";
+    	  }
+      }
+      sport.getPersonnes().add(pers);
+      sportRepo.saveAndFlush(sport);
+
+    }
+    catch (Exception ex) {
+      return "Error adding the sport (id="+idl+") to the personne (id="+idp+") : " + ex.toString();
+    }
+    return "The sport with id "+idl+" successfully adding to personne with id "+idp;
   }
   
 
